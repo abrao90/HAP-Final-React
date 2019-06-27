@@ -1,0 +1,82 @@
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { withAuthentication } from "../Session";
+import * as ROUTE from "../../constants/routes";
+import Footer from "../../common/src/containers/Hosting/Footer";
+import { DrawerProvider } from "../../common/src/contexts/DrawerContext";
+import { ParallaxProvider } from "react-scroll-parallax";
+import Landing from "../Landing_Page";
+import { SignIn } from "../Sign_In";
+import { SignUp } from "../Sign_Up";
+import AccountSettings from "../Account_Settings";
+import Head from "next/head";
+import { ThemeProvider } from "styled-components";
+import Sticky from "react-stickynode";
+import { hostingTheme } from "../../common/src/theme/hosting";
+import {
+  GlobalStyle,
+  ContentWrapper
+} from "../../common/src/containers/Hosting/hosting.style";
+import { ResetCSS } from "../../common/src/assets/css/style";
+import Navbar from "../../common/src/containers/Hosting/Navbar";
+import Dashboard from "../Dashboard";
+import { ForgotPassword } from "../Forgot_Password";
+import Admin from "../Admin";
+import Admin_SignIn from "../Admin_SignIn";
+import Vet from "../Vet";
+import Vet_Sign_In from "../Vet_Sign_In";
+import Vet_Sign_Up from "../Vet_Sign_Up";
+import SignInOptPage from "../Sign_In_Options";
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <ThemeProvider theme={hostingTheme}>
+          <ParallaxProvider>
+            <Head>
+              <title>Hosting | A react next landing page</title>
+              <meta name="Description" content="React next landing page" />
+              <meta name="theme-color" content="#eb4d4b" />
+              <link
+                href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900|Open+Sans:400,400i,600,700"
+                rel="stylesheet"
+              />
+            </Head>
+            <ResetCSS />
+            <GlobalStyle />
+            <ContentWrapper>
+              <Sticky top={0} innerZ={9999} activeClass="sticky-nav-active">
+                <DrawerProvider>
+                  <Navbar />
+                </DrawerProvider>
+              </Sticky>
+              <Route path={ROUTE.LANDING} exact component={Landing} />
+              <Route path={ROUTE.SIGNIN_OPTIONS} exact component={SignInOptPage} />              
+              <Route path={ROUTE.ADMIN} exact component={Admin} />
+              <Route path={ROUTE.ADMIN_SIGNIN} exact component={Admin_SignIn} />              
+              <Route path={ROUTE.SIGNIN} exact component={SignIn} />
+              <Route path={ROUTE.VET} exact component={Vet} />
+              <Route path={ROUTE.VET_SIGNIN} exact component={Vet_Sign_In} />
+              <Route path={ROUTE.VET_SIGNUP} exact component={Vet_Sign_Up} />
+              <Route path={ROUTE.SIGNUP} exact component={SignUp} />
+              <Route path={ROUTE.DASHBOARD} exact component={Dashboard} />
+              <Route
+                path={ROUTE.ACCOUNT_SETTINGS}
+                exact
+                component={AccountSettings}
+              />
+              <Route
+                path={ROUTE.FORGET_PASSWORD}
+                exact
+                component={ForgotPassword}
+              />
+              <Footer />
+            </ContentWrapper>
+          </ParallaxProvider>
+        </ThemeProvider>
+      </Router>
+    );
+  }
+}
+
+export default withAuthentication(App);
