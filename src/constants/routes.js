@@ -7,6 +7,7 @@ export const VET = '/vet';
 export const VET_SIGNIN = '/vet-signin';
 export const VET_SIGNUP = '/vet-signup';
 export const DASHBOARD = '/dashboard';
+export const SUCCESS = '/success'
 export const BOOK_AN_APPOINTMENT = '/book-an-appointment';
 export const ACCOUNT_SETTINGS = '/account';
 export const SIGNIN_OPTIONS = '/signin-options';

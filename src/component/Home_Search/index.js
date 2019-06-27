@@ -9,6 +9,7 @@ import Link from "next/link"
 import Icon from "react-icons-kit"
 import Button from "../../elements/Button"
 import Input from "../../elements/Input"
+import * as ROUTES from "../../constants/routes"
 import Select from "../../elements/Select"
 import { book,  } from "react-icons-kit/feather/"
 import { confirmAlert } from "react-confirm-alert"
@@ -72,16 +73,16 @@ class HomeSearchBase extends Component {
     })
   }
 
-  onChangeOTP = event => {
-    this.setState(
-      {
-        code: event,
-      },
-      () => {
-        console.log(this.state)
-      }
-    )
-  }
+  // onChangeOTP = event => {
+  //   this.setState(
+  //     {
+  //       code: event,
+  //     },
+  //     () => {
+  //       console.log(this.state)
+  //     }
+  //   )
+  // }
 
   onSubmit = () => {
     // event.preventDefault()
@@ -257,7 +258,9 @@ class HomeSearchBase extends Component {
         window.localStorage.setItem('dbDocID', res.id)
       })
       .then(()=>{
-        this.props.history.push(`/${this.state.service.value}`)
+        // this.props.history.push(`/${this.state.service.value}`)
+        this.props.history.push(`${ROUTES.BOOK_AN_APPOINTMENT}/${this.state.service.value}`)
+
       })
       .catch(rej => {
         console.log(rej)
