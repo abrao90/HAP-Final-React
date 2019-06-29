@@ -14,29 +14,64 @@ class WizardBase extends React.Component {
     }
   }
 
+  componentDidMount(){
+    if (window.localStorage.getItem("dbDocID") === null ) {
+      this.props.history.push('/', {
+        message : "Register for a vet a visit from here."
+      })
+    }else{
+      this.props.firebase.fsdb
+      .collection("form-inquiry")
+      .doc(window.localStorage.getItem("dbDocID")).get()
+      .then((doc)=>{
+        this.setState({
+          values: {
+           email: doc.data().customerDetails.email, 
+           zipcode: doc.data().customerDetails.zipcode, 
+           session: doc.data().sessionDetails.session,
+           videoconsultation: doc.data().sessionDetails.videoconsultation,
+          }
+        }, ()=>{
+          if (doc.data().sessionDetails.Date) {
+            this.props.setDate(doc.data().sessionDetails.Date)
+          }
+        })
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+    }
+  }
 
   next = values => {
-    console.log(values, this.props)
     this.props.firebase.fsdb
       .collection("form-inquiry")
       .doc(window.localStorage.getItem("dbDocID"))
       .update({
-        customerDetails: {
-          email: values["email"],
-          zipcode: values["zipcode"],
-        },
+        "customerDetails.email": values["email"],
+        "customerDetails.zipcode": values["zipcode"],
       })
     this.props.firebase.fsdb
       .collection("form-inquiry")
       .doc(window.localStorage.getItem("dbDocID"))
       .update({
-        sessionDetails: {
-          Date: this.props.date,
-          session: `${values["session"]}`,
-          videoconsultation: `${values["videoconsultation"]}`,
-        },
+        "sessionDetails.Date": `${this.props.date}`,
+         "sessionDetails.session": `${values["session"]}`,
+        "sessionDetails.videoconsultation": `${values["videoconsultation"]}`,
       })
       .then(res => {
+        // const stepone = {
+        //   customerDetails: {
+        //     email: values["email"],
+        //     zipcode: values["zipcode"],
+        //   },
+        //    sessionDetails: {
+        //     Date: this.props.date,
+        //     session: `${values["session"]}`,
+        //     videoconsultation: `${values["videoconsultation"]}`,
+        //   },
+        // }
+        // window.localStorage.setItem('stepone', JSON.stringify(stepone))
         this.props.history.push(`${this.props.match.url}/${values["zipcode"]}`)
       })
       .catch(rej => {

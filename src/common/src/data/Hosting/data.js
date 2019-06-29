@@ -136,11 +136,6 @@ export const MENU_ITEMS = [
     path: '#contact_section',
     offset: '70',
   },
-  {
-    label: 'Blog',
-    path: '#blog_section',
-    offset: '70',
-  },
 ];
 
 export const FOOTER_WIDGET = [

@@ -1,4 +1,4 @@
-import React from "react";
+import React , { Fragment }from "react";
 import FeatureSection from "../../common/src/containers/Hosting/Features";
 import InfoSection from "../../common/src/containers/Hosting/Info";
 import DomainSection from "../../common/src/containers/Hosting/Domain";
@@ -13,19 +13,19 @@ import FaqSection from "../../common/src/containers/Hosting/Faq";
 
 const Landing = () => {
   return (
-    <div>
+    <Fragment>
       <BannerSection />
-      <FeatureSection />
-      <InfoSection />
-      <PricingSection />
-      <DomainSection />
       <ServicesSection />
-      <PaymentSection />
+      <FeatureSection />
       <TestimonialSection />
       <GuaranteeSection />
+      <DomainSection />
+      <InfoSection />
+      <PricingSection />
+      <PaymentSection />
       <FaqSection />
       <ContactSection />
-    </div>
+      </Fragment>
   );
 };
 

@@ -11,13 +11,13 @@ import Button from "../../elements/Button"
 import Input from "../../elements/Input"
 import * as ROUTES from "../../constants/routes"
 import Select from "../../elements/Select"
-import { book,  } from "react-icons-kit/feather/"
+import { book, wind,  } from "react-icons-kit/feather/"
 import { confirmAlert } from "react-confirm-alert"
 import { withRouter } from "react-router-dom";
 import "react-confirm-alert/src/react-confirm-alert.css"
 import ReactPhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/dist/style.css'
-
+import './styles.css'
 
 const INITIAL_STATE = {
   name: "",
@@ -33,6 +33,17 @@ class HomeSearchBase extends Component {
     super(props)
     this.state = { ...INITIAL_STATE }
   }
+
+  // componentDidMount(){
+  //   const homeform = JSON.parse(window.localStorage.getItem('homeform'));
+  //   if (homeform !== null) {
+  //     this.setState({
+  //       name: homeform.customerDetails.name,
+  //       phone: homeform.customerDetails.phone,
+  //       service: homeform.customerDetails.service,
+  //     })
+  //   }
+  // }
 
   // componentWillMount(){
   //  const values =  window.localStorage.getItem('homeSearch')
@@ -255,7 +266,37 @@ class HomeSearchBase extends Component {
       }
     )
     .then(res => {
+      const homeform =  {
+        customerDetails: {
+          name: `${this.state.name}`,
+          zipcode: "",
+          phone: `${this.state.phone}`,
+          email: "",
+          service: `${this.state.service.value}`,
+        },
+        vetDetails:{
+          isVetAssigned: false,
+          vetName: "",
+        },
+        sessionDetails: {
+          Date: "",
+          session: "",
+          videoconsultation: "",
+        },
+        petDetails: {
+          petdate: "",
+          petname: "",
+          type: "",
+          gender: "",
+          notes: "",
+        },
+        bookingStatus:{
+          phoneVerfication: false,
+          status: "Not confirmed"
+        }
+      };
         window.localStorage.setItem('dbDocID', res.id)
+        window.localStorage.setItem('homeform', JSON.stringify(homeform))
       })
       .then(()=>{
         // this.props.history.push(`/${this.state.service.value}`)

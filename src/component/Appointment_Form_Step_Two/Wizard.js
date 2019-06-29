@@ -2,7 +2,6 @@ import React from "react";
 import { Form } from "react-final-form";
 import { withRouter } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-
 class WizardBase extends React.Component {
   static Page = ({ children }) => children;
 
@@ -15,9 +14,32 @@ class WizardBase extends React.Component {
     };
   }
 
-  componentDidMount() {
-    if (window.localStorage.getItem("dbDocID") === null) {
-      window.location.replace("/");
+  componentDidMount(){
+    if (window.localStorage.getItem("dbDocID") === null ) {
+      this.props.history.push('/', {
+        message : "Register for a vet a visit from here."
+      })
+    }else{
+    this.props.firebase.fsdb
+      .collection("form-inquiry")
+      .doc(window.localStorage.getItem("dbDocID")).get()
+      .then((doc)=>{
+        this.setState({
+          values: {
+            petname: doc.data().petDetails.petname, 
+            type: doc.data().petDetails.type,
+            gender: doc.data().petDetails.gender,
+            notes: doc.data().petDetails.notes,
+          }
+        }, ()=>{
+          if (doc.data().petDetails.Date) {
+            this.props.setDate(doc.data().petDetails.petdate)
+          }
+        })
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
     }
   }
 
@@ -26,14 +48,12 @@ class WizardBase extends React.Component {
       .collection("form-inquiry")
       .doc(window.localStorage.getItem("dbDocID"))
       .update({
-        petDetails: {
-          petdate: `${this.props.date}`,
-          petname: `${values["petname"]}`,
-          type: `${values["type"]}`,
-          gender: `${values["gender"]}`,
-          notes: `${values["notes"]}`
-        }
-      })
+        "petDetails.petdate":  `${this.props.date}`,
+        "petDetails.petname": `${values["petname"]}`,
+        "petDetails.type": `${values["type"]}`,
+        "petDetails.gender": `${values["gender"]}`,
+        "petDetails.notes": `${values["notes"]}`,
+        })
       .then(res => {
         window.localStorage.removeItem("dbDocID");
         this.props.history.push(`${this.props.match.url}${ROUTES.SUCCESS}`);
@@ -44,7 +64,27 @@ class WizardBase extends React.Component {
       });
   };
 
-  previous = () => this.props.history.goBack();
+  previous = (event,values) => {
+    event.preventDefault();
+    this.props.firebase.fsdb
+      .collection("form-inquiry")
+      .doc(window.localStorage.getItem("dbDocID"))
+      .update({
+        "petDetails.petdate":  `${this.props.date}`,
+        "petDetails.petname": `${values["petname"]}`,
+        "petDetails.type": `${values["type"]}`,
+        "petDetails.gender": `${values["gender"]}`,
+        "petDetails.notes": `${values["notes"]}`,
+        })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(rej => {
+        console.log(rej);
+        alert(rej);
+      });
+    this.props.history.goBack();
+  }
   /**
    * NOTE: Both validate and handleSubmit switching are implemented
    * here because 🏁 Redux Final Form does not accept changes to those
@@ -77,7 +117,7 @@ class WizardBase extends React.Component {
           <form>
             {activePage}
             <div className="buttons">
-              <button type="button" onClick={this.previous}>
+              <button type="button" onClick={e => this.previous(e,values)}>
                 « Previous
               </button>
               <button

@@ -28,6 +28,10 @@ import Vet_Sign_In from "../Vet_Sign_In";
 import Vet_Sign_Up from "../Vet_Sign_Up";
 import SignInOptPage from "../Sign_In_Options";
 import BookAnAppointment from "../Book_An_Appointment";
+import VideoComponent from '../VideoComponent';
+
+
+
 class App extends Component {
   render() {
     return (
@@ -52,6 +56,7 @@ class App extends Component {
                 </DrawerProvider>
               </Sticky>
               <Route path={ROUTE.LANDING} exact component={Landing} />
+              <Route path={ROUTE.VIDEO_COMPONENT} exact component={VideoComponent} />
               <Route path={ROUTE.SIGNIN_OPTIONS}  component={SignInOptPage} />              
               <Route path={ROUTE.ADMIN}  component={Admin} />
               <Route path={ROUTE.ADMIN_SIGNIN}  component={Admin_SignIn} />              

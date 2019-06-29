@@ -4,6 +4,8 @@ import { Field } from "react-final-form"
 import Wizard from "./Wizard"
 import { withFirebase } from "../Firebase"
 import * as ROUTES from "../../constants/routes"
+import moment from "moment"
+
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -23,8 +25,8 @@ const required = value => (value ? undefined : "Required")
 
 const WizardFormBase = props => {
   const [emailError, setEmailError] = useState("")
-  const [docID, setdocID] = useState(new Date())
-  const [date, setDate] = useState("")
+  const [docID, setdocID] = useState("")
+  const [date, setDate] = useState(new Date())
 
 
   function errorHandler() {
@@ -38,8 +40,6 @@ const WizardFormBase = props => {
   function dateUpdate(event){
       setDate(event)
   }
-
-
   return (
     <Styles>
       <h1>Make an appointment with the Vet</h1>
@@ -51,6 +51,7 @@ const WizardFormBase = props => {
       <Wizard
         initialValues={{ employed: true, stooge: "larry" }}
         firebase={props.firebase}
+        setDate={setDate}
         emailPrompt={errorHandler}
         date={date}
         setdocID={setdocID}
@@ -63,7 +64,6 @@ const WizardFormBase = props => {
               name="email"
               component="input"
               type="email"
-              date={date}
               placeholder="Email"
               validate={required}
             />
@@ -93,7 +93,12 @@ const WizardFormBase = props => {
               type="date"
               placeholder="Date"
             /> */}
-            <DatePicker selected={date} vale={date} onChange={(e)=>dateUpdate(e)}  />
+            {/* <DatePicker selected={date}  onChange={(e)=>dateUpdate(e)}  /> */}
+            
+            <DatePicker
+              onChange={(e)=>dateUpdate(e)} 
+              value={moment(date).format("DD-MM-YYYY")}  
+            />
             <Error name="email" />
           </div>
           <label>Session</label>

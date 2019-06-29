@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import PropTypes from "prop-types"
 import Box from "../../../../../elements/Box"
 import Text from "../../../../../elements/Text"
@@ -43,15 +43,21 @@ const BannerSection = ({
               {...description}
               content="Our vets will visit your house, so you dont have to deal with the hassle of commuting to a vet clinic! We offer great prices on all services from grooming to general checkups"
             />
+        <Text
+              {...description}
+              content="Start your Vet booking from here"/>
           </Box>
           <HomeSearch
             searchArea={searchArea}
             search={search}
             DOMAIN_NAMES={DOMAIN_NAMES}
             button={button}
+            
             DOMAIN_PRICE={DOMAIN_PRICE}
           />
+          
         </Box>
+
       </Container>
     </BannerWrapper>
   )

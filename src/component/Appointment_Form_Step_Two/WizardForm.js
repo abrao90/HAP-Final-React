@@ -6,6 +6,7 @@ import { withFirebase } from "../Firebase"
 import * as ROUTES from "../../constants/routes"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import moment from "moment"
 
 const Error = ({ name }) => (
   <Field
@@ -49,6 +50,7 @@ const WizardFormBase = props => {
         date={date}
         emailPrompt={errorHandler}
         setdocID={setdocID}
+        setDate={setDate}
         // onSubmit={onSubmit}
       >
         <Wizard.Page
@@ -80,8 +82,7 @@ const WizardFormBase = props => {
           <div>
             <label>What year was your pet born?</label>
             <DatePicker
-              selected={date}
-              vale={date}
+              value={moment(date).format("DD-MM-YYYY")}  
               onChange={e => dateUpdate(e)}
             />
             <Error name="email" />
