@@ -13,3 +13,5 @@ export const ACCOUNT_SETTINGS = '/account';
 export const SIGNIN_OPTIONS = '/signin-options';
 export const FORGET_PASSWORD = '/forgot-pw';
 export const VIDEO_COMPONENT = '/video-session';
+export const BOOKING_VERIFICATION = '/verify-booking';
+

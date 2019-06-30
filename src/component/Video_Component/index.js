@@ -140,7 +140,7 @@ export default class VideoComponent extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:4000/token').then(results => {
+		axios.get('https://hug-a-pet.herokuapp.com/token').then(results => {
 			const { identity, token } = results.data;
 			this.setState({ identity, token });
 		}).catch((rej)=>{
@@ -174,7 +174,7 @@ export default class VideoComponent extends Component {
 				<CardText>
 					<div className="flex-container">
 						{showLocalTrack}
-						<div className="flex-item">
+						<div className="flex-item" style={{marginTop:"184px"}}>
 							<TextField
 								hintText="Room Name"
 								onChange={this.handleRoomNameChange}

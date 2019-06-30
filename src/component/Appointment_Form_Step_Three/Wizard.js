@@ -19,71 +19,43 @@ class WizardBase extends React.Component {
       this.props.history.push('/', {
         message : "Register for a vet a visit from here."
       })
-    }else{
-    this.props.firebase.fsdb
-      .collection("form-inquiry")
-      .doc(window.localStorage.getItem("dbDocID")).get()
-      .then((doc)=>{
-        this.setState({
-          values: {
-            petname: doc.data().petDetails.petname, 
-            type: doc.data().petDetails.type,
-            gender: doc.data().petDetails.gender,
-            notes: doc.data().petDetails.notes,
-          }
-        }, ()=>{
-          if (doc.data().petDetails.Date) {
-            this.props.setDate(doc.data().petDetails.petdate)
-          }
-        })
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
     }
+    // }else{
+    // this.props.firebase.fsdb
+    //   .collection("form-inquiry")
+    //   .doc(window.localStorage.getItem("dbDocID")).get()
+    //   .then((doc)=>{
+    //     this.setState({
+    //       values: {
+    //         phone: doc.data().customerDetails.phone, 
+    //       }
+    //     })
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error);
+    //   })
+    // }
   }
 
   next = values => {
+    alert('Booking Verfied')
     this.props.firebase.fsdb
-      .collection("form-inquiry")
-      .doc(window.localStorage.getItem("dbDocID"))
-      .update({
-        "petDetails.petdate":  `${this.props.date}`,
-        "petDetails.petname": `${values["petname"]}`,
-        "petDetails.type": `${values["type"]}`,
-        "petDetails.gender": `${values["gender"]}`,
-        "petDetails.notes": `${values["notes"]}`,
-        })
-      .then(res => {
-        // window.localStorage.removeItem("dbDocID");
-        this.props.history.push(ROUTES.BOOKING_VERIFICATION);
-      })
-      .catch(rej => {
-        console.log(rej);
-        alert(rej);
-      });
+    .collection("form-inquiry")
+    .doc(window.localStorage.getItem("dbDocID"))
+    .update({
+      "bookingStatus.phoneVerfication": true,
+       "bookingStatus.status": 'Confirmed',
+    })
+    .then( ()=> {
+    this.props.history.push(`${ROUTES.BOOKING_VERIFICATION}/opt-successfully-verified`)
+    })
+    .catch(rej => {
+      console.log(rej)
+      alert(rej)
+    })
   };
 
   previous = (event,values) => {
-    event.preventDefault();
-    this.props.firebase.fsdb
-      .collection("form-inquiry")
-      .doc(window.localStorage.getItem("dbDocID"))
-      .update({
-        "petDetails.petdate":  `${this.props.date}`,
-        "petDetails.petname": `${values["petname"]}`,
-        "petDetails.type": `${values["type"]}`,
-        "petDetails.gender": `${values["gender"]}`,
-        "petDetails.notes": `${values["notes"]}`,
-        })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(rej => {
-        console.log(rej);
-        alert(rej);
-      });
-    this.props.history.goBack();
   }
   /**
    * NOTE: Both validate and handleSubmit switching are implemented
@@ -117,15 +89,12 @@ class WizardBase extends React.Component {
           <form>
             {activePage}
             <div className="buttons">
-              <button type="button" onClick={e => this.previous(e,values)}>
-                « Previous
-              </button>
               <button
                 type="submit"
                 onClick={e => this.handleSubmit(e, values)}
                 disabled={submitting}
               >
-                Submit
+                Verify OTP
               </button>
             </div>
 

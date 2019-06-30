@@ -1,17 +1,15 @@
 import React from "react"
 import { Form } from "react-final-form"
-import { navigate } from "@reach/router"
+import { withRouter } from 'react-router-dom'
+import * as ROUTES from '../../constants/routes'
 
 class WizardBase extends React.Component {
   static Page = ({ children }) => children
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      page: 0,
-      values: props.initialValues || {},
-      docID: "",
-    }
+  componentDidMount(){
+    setTimeout(()=>{
+      this.props.history.push(ROUTES.BOOKING_VERIFICATION)
+    },4000)
   }
 
  
@@ -98,6 +96,6 @@ class WizardBase extends React.Component {
 }
 
 
-const Wizard = WizardBase;
+const Wizard = withRouter(WizardBase);
 
 export default Wizard;

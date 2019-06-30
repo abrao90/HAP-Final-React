@@ -28,9 +28,10 @@ import Vet_Sign_In from "../Vet_Sign_In";
 import Vet_Sign_Up from "../Vet_Sign_Up";
 import SignInOptPage from "../Sign_In_Options";
 import BookAnAppointment from "../Book_An_Appointment";
-import VideoComponent from '../VideoComponent';
-
-
+import VideoComponent from "../Video_Component";
+import WizardForm5 from "../Appointment_Form_Step_Four/WizardForm";
+import WizardForm4 from "../Appointment_Form_Step_Three/WizardForm";
+import WizardForm3 from "../Appointment_Form_Success/WizardForm";
 
 class App extends Component {
   render() {
@@ -56,17 +57,38 @@ class App extends Component {
                 </DrawerProvider>
               </Sticky>
               <Route path={ROUTE.LANDING} exact component={Landing} />
-              <Route path={ROUTE.VIDEO_COMPONENT} exact component={VideoComponent} />
-              <Route path={ROUTE.SIGNIN_OPTIONS}  component={SignInOptPage} />              
-              <Route path={ROUTE.ADMIN}  component={Admin} />
-              <Route path={ROUTE.ADMIN_SIGNIN}  component={Admin_SignIn} />              
-              <Route path={ROUTE.SIGNIN}  component={SignIn} />
-              <Route path={ROUTE.VET}  component={Vet} />
-              <Route path={ROUTE.VET_SIGNIN}  component={Vet_Sign_In} />
-              <Route path={ROUTE.VET_SIGNUP}  component={Vet_Sign_Up} />
-              <Route path={ROUTE.SIGNUP}  component={SignUp} />
-              <Route path={ROUTE.DASHBOARD}  component={Dashboard} />
-              <Route path={ROUTE.BOOK_AN_APPOINTMENT}  component={BookAnAppointment} />
+              <Route path={ROUTE.VIDEO_COMPONENT} component={VideoComponent} />
+              <Route path={ROUTE.SIGNIN_OPTIONS} component={SignInOptPage} />
+              <Route path={ROUTE.ADMIN} component={Admin} />
+              <Route path={ROUTE.ADMIN_SIGNIN} component={Admin_SignIn} />
+              <Route path={ROUTE.SIGNIN} component={SignIn} />
+              <Route
+                exact
+                path={ROUTE.BOOKING_VERIFICATION}
+                component={WizardForm4}
+              />
+              <Route
+                exact
+                path={`${ROUTE.BOOKING_VERIFICATION}/opt-successfully-verified`}
+                component={WizardForm5}
+              />
+              
+              <Route
+                exact
+                path={`${ROUTE.BOOKING_VERIFICATION}/opt-successfully-verified/success`}
+                component={WizardForm3}
+              />
+
+
+              <Route path={ROUTE.VET} component={Vet} />
+              <Route path={ROUTE.VET_SIGNIN} component={Vet_Sign_In} />
+              <Route path={ROUTE.VET_SIGNUP} component={Vet_Sign_Up} />
+              <Route path={ROUTE.SIGNUP} component={SignUp} />
+              <Route path={ROUTE.DASHBOARD} component={Dashboard} />
+              <Route
+                path={ROUTE.BOOK_AN_APPOINTMENT}
+                component={BookAnAppointment}
+              />
               <Route
                 path={ROUTE.ACCOUNT_SETTINGS}
                 exact
