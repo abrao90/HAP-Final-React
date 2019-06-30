@@ -31,21 +31,21 @@ const BannerSection = ({
           <Box {...textArea}>
             <DiscountWrapper>
               <DiscountLabel>
-                <Text {...discountAmount} content="Free Video Consultation" />
+                <Text {...discountAmount} content="Bold Color Text - Free Video Consultation" />
                 <Text {...discountText} content="on every confirmed booking" />
               </DiscountLabel>
             </DiscountWrapper>
             <Heading
               {...title}
-              content="Book a vet visit for your pet in Berlin!"
+              content="H1 - Book a vet visit for your pet in Berlin!"
             />
             <Text
               {...description}
-              content="Our vets will visit your house, so you dont have to deal with the hassle of commuting to a vet clinic! We offer great prices on all services from grooming to general checkups"
+              content="Paragraph - Our vets will visit your house, so you dont have to deal with the hassle of commuting to a vet clinic! We offer great prices on all services from grooming to general checkups"
             />
         <Text
               {...description}
-              content="Start your Vet booking from here"/>
+              content="Para 2 - Start your Vet booking from here"/>
           </Box>
           <HomeSearch
             searchArea={searchArea}

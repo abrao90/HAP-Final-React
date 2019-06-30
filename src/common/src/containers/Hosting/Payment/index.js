@@ -12,7 +12,7 @@ import Container from '../../../components/UI/Container';
 import CardImage from '../../../assets/image/hosting/pay-card.png';
 import PayLogos from '../../../assets/image/hosting/pay-logo.png';
 
-const PaymentSection = ({
+const BlogSection = ({
   sectionWrapper,
   row,
   col,
@@ -32,16 +32,16 @@ const PaymentSection = ({
             <Fade bottom cascade>
               <Heading
                 {...title}
-                content="We have supported all payment gateways on domain hosting"
+                content="This is the blog section heading"
               />
               <Text
                 {...description}
-                content="You can pay your bills with your desired payment system. No pain of using a specific credit card for bill payments"
+                content="It is about petcare, etc. etc. Tips on how to take care of your pets."
               />
               <Box>
                 <Link href="#">
                   <a>
-                    <Button {...button} title="LEARN MORE" />
+                    <Button {...button} title="GO TO BLOG" />
                   </a>
                 </Link>
               </Box>
@@ -61,7 +61,7 @@ const PaymentSection = ({
   );
 };
 
-PaymentSection.propTypes = {
+BlogSection.propTypes = {
   sectionWrapper: PropTypes.object,
   row: PropTypes.object,
   col: PropTypes.object,
@@ -74,7 +74,7 @@ PaymentSection.propTypes = {
   imageTwo: PropTypes.object,
 };
 
-PaymentSection.defaultProps = {
+BlogSection.defaultProps = {
   sectionWrapper: {
     as: 'section',
     pt: ['60px', '80px', '80px', '80px'],
@@ -135,4 +135,4 @@ PaymentSection.defaultProps = {
   },
 };
 
-export default PaymentSection;
+export default BlogSection;

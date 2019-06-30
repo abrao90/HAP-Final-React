@@ -35,16 +35,16 @@ const InfoSection = ({
             <Fade bottom cascade>
               <Heading
                 {...title}
-                content="Increase your website growth with high performance servers"
+                content="H1 - Increase your revenue growth with digital assistance"
               />
               <Text
                 {...description}
-                content="For Enhanced performance we use LiteSpeed Web Server, HTTP/2, PHP7. We make your website faster, which will help you to increase search ranking!."
+                content="Para - With our tools, you will be able to manage every aspect of your business in a more hassle-free way. Be it invoicing, calendar management or getting more bookings, HugAPet's digital suite has you covered!"
               />
               <Box>
                 <Link href="#">
                   <a>
-                    <Button {...button} title="HOW IT WORKS" />
+                    <Button {...button} title="KNOW MORE" />
                   </a>
                 </Link>
               </Box>

@@ -10,7 +10,7 @@ import Container from '../../../components/UI/Container';
 
 import GuaranteeImage from '../../../assets/image/hosting/badge.png';
 
-const GuaranteeSection = ({
+const AboutTeam = ({
   sectionWrapper,
   row,
   title,
@@ -25,10 +25,10 @@ const GuaranteeSection = ({
         <Box {...row}>
           <Box {...textArea}>
             <Fade bottom cascade>
-              <Heading {...title} content="30 Days Money Back Guarantee" />
+              <Heading {...title} content="Heading - About Us Section " />
               <Text
                 {...description}
-                content="We have provided 30 Days Money Back Guarantee in case of dissatisfaction with our product. We care for our customers and their values. "
+                content=" description - About our team and our mission. We will offer a Money Back Guarantee in case of dissatisfaction with our product. We care for our business customers and their values. "
               />
             </Fade>
           </Box>
@@ -45,7 +45,7 @@ const GuaranteeSection = ({
   );
 };
 
-GuaranteeSection.propTypes = {
+AboutTeam.propTypes = {
   sectionWrapper: PropTypes.object,
   row: PropTypes.object,
   title: PropTypes.object,
@@ -55,7 +55,7 @@ GuaranteeSection.propTypes = {
   ImageOne: PropTypes.object,
 };
 
-GuaranteeSection.defaultProps = {
+AboutTeam.defaultProps = {
   sectionWrapper: {
     as: 'section',
     pt: ['0px', '0px', '0px', '80px'],
@@ -94,4 +94,4 @@ GuaranteeSection.defaultProps = {
   },
 };
 
-export default GuaranteeSection;
+export default AboutTeam;

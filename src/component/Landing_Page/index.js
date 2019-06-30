@@ -1,9 +1,9 @@
 import React , { Fragment }from "react";
 import FeatureSection from "../../common/src/containers/Hosting/Features";
 import InfoSection from "../../common/src/containers/Hosting/Info";
-import DomainSection from "../../common/src/containers/Hosting/Domain";
-import PaymentSection from "../../common/src/containers/Hosting/Payment";
-import GuaranteeSection from "../../common/src/containers/Hosting/Guarantee";
+import VetsSection from "../../common/src/containers/Hosting/Domain";
+import BlogSection from "../../common/src/containers/Hosting/Payment";
+import AboutTeam from "../../common/src/containers/Hosting/Guarantee";
 import ServicesSection from "../../common/src/containers/Hosting/Services";
 import BannerSection from "../../common/src/containers/Hosting/Banner";
 import PricingSection from "../../common/src/containers/Hosting/Pricing";
@@ -17,13 +17,13 @@ const Landing = () => {
       <BannerSection />
       <ServicesSection />
       <FeatureSection />
+      <AboutTeam /><br/><br/><br/>
       <TestimonialSection />
-      <GuaranteeSection />
-      <DomainSection />
-      <InfoSection />
-      <PricingSection />
-      <PaymentSection />
       <FaqSection />
+      <BlogSection /> {/* This is the blog section */}
+      <VetsSection />
+      <PricingSection />
+      <InfoSection />< br/>< br/>< br/>
       <ContactSection />
       </Fragment>
   );

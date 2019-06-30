@@ -107,13 +107,13 @@ export const MENU_ITEMS = [
     offset: '40',
   },
   {
-    label: 'Why Us',
-    path: '#feature_section',
+    label: 'Our Services',
+    path: '#service_section',
     offset: '40',
   },
   {
-    label: 'Our Services',
-    path: '#service_section',
+    label: 'Why Us',
+    path: '#feature_section',
     offset: '40',
   },
   {
@@ -124,6 +124,11 @@ export const MENU_ITEMS = [
   {
     label: 'FAQ',
     path: '#faq_section',
+    offset: '70',
+  },
+  {
+    label: 'Blog',
+    path: '#blog',
     offset: '70',
   },
   {
@@ -278,19 +283,19 @@ export const MONTHLY_PRICING_TABLE = [
     url: '#',
     listItems: [
       {
-        content: 'Drag & Drop Builder',
+        content: 'Long Term Parnership to grow digital business',
       },
       {
-        content: '1,000s of Templates Ready',
+        content: 'Digital Training Seminars',
       },
       {
-        content: 'Blog Tools',
+        content: 'Collaboration on future projects',
       },
       {
-        content: 'eCommerce Store ',
+        content: 'Funding assistance',
       },
       {
-        content: '30+ Webmaster Tools',
+        content: 'Hiring assistance',
       },
     ],
   },

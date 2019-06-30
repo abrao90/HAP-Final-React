@@ -11,7 +11,7 @@ import Container from '../../../components/UI/Container';
 
 import Domains from '../../../assets/image/hosting/circle.png';
 
-const DomainSection = ({
+const VetsSection = ({
   sectionWrapper,
   row,
   col,
@@ -32,16 +32,16 @@ const DomainSection = ({
             <Fade bottom cascade>
               <Heading
                 {...title}
-                content="Available domain extension with your custom name"
+                content="Heading 1 - Describes how Hug A Pet's Customer Management tools will help vets with their business"
               />
               <Text
                 {...description}
-                content="You can check the domain avaibility by our domain tool and choose your desired domain without any hagitation if available."
+                content="We have tools that help vets with digital customer support and booking management, calendar assistance, digital invoicing tools and customer management assistance."
               />
               <Box>
                 <Link href="#">
                   <a>
-                    <Button {...button} title="EXPLORE MORE" />
+                    <Button {...button} title="KNOW MORE" />
                   </a>
                 </Link>
               </Box>
@@ -53,7 +53,7 @@ const DomainSection = ({
   );
 };
 
-DomainSection.propTypes = {
+VetsSection.propTypes = {
   sectionWrapper: PropTypes.object,
   row: PropTypes.object,
   col: PropTypes.object,
@@ -64,7 +64,7 @@ DomainSection.propTypes = {
   imageArea: PropTypes.object,
 };
 
-DomainSection.defaultProps = {
+VetsSection.defaultProps = {
   sectionWrapper: {
     as: 'section',
     pt: ['0', '0', '40px', '80px'],
@@ -116,4 +116,4 @@ DomainSection.defaultProps = {
   },
 };
 
-export default DomainSection;
+export default VetsSection;
