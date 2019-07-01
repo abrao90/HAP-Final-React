@@ -10,11 +10,13 @@ import PricingSection from "../../common/src/containers/Hosting/Pricing";
 import TestimonialSection from "../../common/src/containers/Hosting/Testimonials";
 import ContactSection from "../../common/src/containers/Hosting/Contact";
 import FaqSection from "../../common/src/containers/Hosting/Faq";
+import Blog from '../Contentful'
 
 const Landing = () => {
   return (
     <Fragment>
       <BannerSection />
+      <Blog />
       <ServicesSection />
       <FeatureSection />
       <AboutTeam /><br/><br/><br/>
