@@ -16,11 +16,12 @@ const VetsSection = ({
   row,
   col,
   title,
+  data,
   description,
   button,
   textArea,
   imageArea,
-}) => {
+}) => { 
   return (
     <Box {...sectionWrapper}>
       <Container>
@@ -32,16 +33,16 @@ const VetsSection = ({
             <Fade bottom cascade>
               <Heading
                 {...title}
-                content="Heading 1 - Describes how Hug A Pet's Customer Management tools will help vets with their business"
+                content={data.fields.h1title1}
               />
               <Text
                 {...description}
-                content="We have tools that help vets with digital customer support and booking management, calendar assistance, digital invoicing tools and customer management assistance."
-              />
+                content={data.fields.h3title1}
+                />
               <Box>
                 <Link href="#">
                   <a>
-                    <Button {...button} title="KNOW MORE" />
+                    <Button {...button} title="EXPLORE MORE" />
                   </a>
                 </Link>
               </Box>

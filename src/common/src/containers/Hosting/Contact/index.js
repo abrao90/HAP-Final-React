@@ -23,10 +23,10 @@ const ContactSection = ({
     <Box {...sectionWrapper}>
       <Container>
         <Box {...secTitleWrapper}>
-          <Text {...secText} content="STAY IN TOUCH WITH US" />
+          <Text {...secText} content="CONTACT US" />
           <Heading
             {...secHeading}
-            content="Are you a vet and want to know more about our product?"
+            content="Are you Interested to meet with us?"
           />
         </Box>
         <Box {...row}>
@@ -39,11 +39,11 @@ const ContactSection = ({
                 isMaterial={false}
                 className="email_input"
               />
-              <Button {...button} title="SIGN UP" />
+              <Button {...button} title="SEND MESSAGE" />
             </ContactFromWrapper>
             <Text
               {...note}
-              content="This mailing list is for only professionals in the petcare industry. If you are a customer looking for assistance for your pet, please email us at info@gohugapet.com."
+              content="Note: Please call us at 12pm to 8am. otherwise our customer supporter will not  available to reach your call, but you can drop mail anytime."
             />
           </Box>
         </Box>

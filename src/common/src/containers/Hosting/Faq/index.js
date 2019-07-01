@@ -29,10 +29,12 @@ const FaqSection = ({
   secHeading,
   secText,
   title,
+  data,
   description,
   buttonWrapper,
   button,
 }) => {
+  // console.log(data);
   return (
     <Box {...sectionWrapper}>
       <Container>

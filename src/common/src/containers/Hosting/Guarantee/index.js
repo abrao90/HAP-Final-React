@@ -25,10 +25,10 @@ const AboutTeam = ({
         <Box {...row}>
           <Box {...textArea}>
             <Fade bottom cascade>
-              <Heading {...title} content="Heading - About Us Section " />
+              <Heading {...title} content="30 Days Money Back Guarantee" />
               <Text
                 {...description}
-                content=" description - About our team and our mission. We will offer a Money Back Guarantee in case of dissatisfaction with our product. We care for our business customers and their values. "
+                content="We have provided 30 Days Money Back Guarantee in case of dissatisfaction with our product. We care for our customers and their values. "
               />
             </Fade>
           </Box>

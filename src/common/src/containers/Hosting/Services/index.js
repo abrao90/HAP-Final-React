@@ -10,45 +10,6 @@ import FeatureBlock from '../../../components/FeatureBlock';
 
 import { SERVICES_DATA } from '../../../data/Hosting/data';
 
-// export const SERVICES_DATA = [
-//   {
-//     title: 'General Checkup',
-//     description:
-//       'Get Lightspeed Development Server for your website and fly in the web',
-//     icon: `${IconOne}`,
-//   },
-//   {
-//     title: 'Grooming and care',
-//     description:
-//       'Best Protection and some tools are provided with our Web servers .',
-//     icon: `${IconTwo}`,
-//   },
-//   {
-//     title: 'Vaccinations',
-//     description:
-//       'You can build any kind of E-commerce Shop with payment security tools',
-//     icon: `${IconThree}`,
-//   },
-//   {
-//     title: 'Euthenasia and life services',
-//     description:
-//       'We have provided 30 days money back guarantee for our customer',
-//     icon: `${IconFour}`,
-//   },
-//   {
-//     title: 'Insurance assistance',
-//     description:
-//       'Client Satisfaction is our first priority and We are best at it',
-//     icon: `${IconFive}`,
-//   },
-//   {
-//     title: 'Other services',
-//     description:
-//       'A Dedicated support team is always ready to provide best support ',
-//     icon: `${IconSix}`,
-//   },
-// ];
-
 const ServicesSection = ({
   sectionWrapper,
   row,
@@ -71,7 +32,7 @@ const ServicesSection = ({
               <Text {...secText} content="OUR SERVICES" />
               <Heading
                 {...secHeading}
-                content="We provide the following services for your pet"
+                content="What Featured Service that We Provide"
               />
             </Fade>
           </Box>

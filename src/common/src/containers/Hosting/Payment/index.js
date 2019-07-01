@@ -9,9 +9,6 @@ import Button from '../../../../../elements/Button';
 import Image from '../../../../../elements/Image';
 import Container from '../../../components/UI/Container';
 
-import CardImage from '../../../assets/image/hosting/pay-card.png';
-import PayLogos from '../../../assets/image/hosting/pay-logo.png';
-
 const BlogSection = ({
   sectionWrapper,
   row,
@@ -22,6 +19,7 @@ const BlogSection = ({
   textArea,
   imageArea,
   imageOne,
+  data,
   imageTwo,
 }) => {
   return (
@@ -32,16 +30,16 @@ const BlogSection = ({
             <Fade bottom cascade>
               <Heading
                 {...title}
-                content="This is the blog section heading"
+                content={data.fields.headline}
               />
               <Text
                 {...description}
-                content="It is about petcare, etc. etc. Tips on how to take care of your pets."
+                content={data.fields.headline2}
               />
               <Box>
                 <Link href="#">
                   <a>
-                    <Button {...button} title="GO TO BLOG" />
+                    <Button {...button} title="LEARN MORE" />
                   </a>
                 </Link>
               </Box>
@@ -49,10 +47,10 @@ const BlogSection = ({
           </Box>
           <Box {...col} {...imageArea}>
             <Fade right>
-              <Image {...imageOne} src={CardImage} alt="Card Image" />
+              <Image {...imageOne} src={data.fields.images[0].fields.file.url} alt="Card Image" />
             </Fade>
             <Fade bottom>
-              <Image {...imageTwo} src={PayLogos} alt="Payment logos" />
+              <Image {...imageTwo} src={data.fields.images[1].fields.file.url} alt="Payment logos" />
             </Fade>
           </Box>
         </Box>
