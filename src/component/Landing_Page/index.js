@@ -10,43 +10,73 @@ import PricingSection from "../../common/src/containers/Hosting/Pricing";
 import TestimonialSection from "../../common/src/containers/Hosting/Testimonials";
 import ContactSection from "../../common/src/containers/Hosting/Contact";
 import FaqSection from "../../common/src/containers/Hosting/Faq";
-import { withContentFul } from "../ContentFul";
+import * as contentful from 'contentful'
 
+let BannerData, ServicesData, FeatureData, AboutTeamData, TestimonialData, FAQData, BlogData, VetsSectionData, ContactData;
 
 class LandingBase extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      isDataAvaliable: false
-     }
+  
+  state = {
+    posts: []
   }
 
-  componentWillMount(){
-    this.props.contentful.getPostfromContentful()
-    .then((response)=>{
-      const posts = [];
-      response.items.forEach(element => {
-          posts.push(element)
-      });
-      return posts
+  client = contentful.createClient({
+    space: 'novn5qkzrff8',
+    accessToken: 'kWNN7ECQThRkF0jSoaS0ZJ_WXxsBO6BjOqXsvuAf07g'
+  })
+
+  componentDidMount() {
+    this.fetchPosts().then(this.setPosts)
+  }
+
+  fetchPosts = () => this.client.getEntries()
+
+
+  setPosts = response => {
+    this.setState({
+      posts: response.items
     })
-    .then((posts)=>{
-      this.setState({
-        posts
-      }, ()=>{
-        this.setState({
-          isDataAvaliable: true,
-        })
-      })
-    })
+    // Blog Title
+    BannerData = this.state.posts[1];
+    console.log("Banner Data", BannerData)
+    // fields.h1text, fields.paragraph, fields.boldColorText
+
+    ServicesData = this.state.posts[5];
+    console.log("Services Data", ServicesData)
+
+    FeatureData = this.state.posts[2]; 
+    console.log("Features Data", FeatureData)
+
+    // AboutTeamData = this.state.posts[7];
+    // console.log("About Team", AboutTeamData)
+
+    TestimonialData = this.state.posts[6]; 
+    console.log("Testimonial Data", TestimonialData)
+
+    FAQData = this.state.posts[3];
+    console.log("FAQ Data", FAQData)
+
+    BlogData = this.state.posts[0]; 
+    console.log("Blog Data", BlogData)
+    // fields.headline, fields.headline2, fields.images IMG 1 full path - this.state.posts[0].fields.images[0].fields.file.url 
+    //fields.images IMG 2 full path - this.state.posts[0].fields.images[1].fields.file.url 
+
+    VetsSectionData = this.state.posts[4];
+    console.log("VetSection Data", VetsSectionData)
+
+    // ContactData = this.state.posts[1];
+    // console.log("Headline", ContactData)
   }
 
   render() { 
-    console.log(this.state);
-    if (this.state.isDataAvaliable) {
+    
       return ( 
         <Fragment>
-        <BannerSection data={this.state.posts[1]} />
+      { this.state.posts.map(({fields}, i) =>
+        <pre key={i}>{JSON.stringify(fields, null, 2)}</pre>
+      )}
+      
+        {/* <BannerSection data={this.state.posts[1]} />
         <ServicesSection data={this.state.posts[5]}/>
         <FeatureSection data={this.state.posts[2]}/>
         <AboutTeam />
@@ -56,17 +86,10 @@ class LandingBase extends Component {
         <VetsSection data={this.state.posts[4]} />
         <PricingSection />
         <InfoSection />
-        <ContactSection data={this.state.posts[6]} />
+        <ContactSection data={this.state.posts[6]} /> */}
       </Fragment>
-       );
-    } else {
-      return null
-    }
-    
+       )
   }
 }
- 
-const Landing = withContentFul(LandingBase)
 
-
-export default Landing;
+export default LandingBase;

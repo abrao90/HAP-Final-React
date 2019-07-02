@@ -13,6 +13,8 @@ import BannerWrapper, {
 import { search } from "react-icons-kit/feather/search"
 import { DOMAIN_NAMES, DOMAIN_PRICE } from "../../../data/Hosting/data"
 
+
+
 const BannerSection = ({
   row,
   title,
